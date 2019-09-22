@@ -9,7 +9,7 @@ RUN export ADD=shiny && bash /etc/cont-init.d/add
 RUN install2.r -e -n -1 tidyverse
 
 # blogdown
-RUN install2.r -e -n -1 blogdown
+RUN install2.r -e -n -1 blogdown miniUI
 
 # hugo
 ENV HUGO_VERSION=0.58.3
@@ -20,3 +20,5 @@ RUN wget -P /tmp/hugo https://github.com/gohugoio/hugo/releases/download/v${HUGO
 
 # haskell
 RUN sudo apt-get update && apt-get install -y haskell-platform
+
+EXPOSE 4321
