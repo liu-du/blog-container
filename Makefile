@@ -2,7 +2,7 @@ build:
 	docker build -t duliu/r-env .
 
 rstudio:
-	docker run -d -p 8787:8787 -p 4321:4321 --name my_rstudio -e PASSWORD=pw duliu/r-env && \
+	docker run -d -p 8787:8787 --name my_rstudio -e PASSWORD=pw duliu/r-env && \
 	echo "Rstudio available at http://localhost:8787. Username: rstudio, Password: pw"
 
 shell:

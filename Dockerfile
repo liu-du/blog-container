@@ -18,7 +18,11 @@ RUN wget -P /tmp/hugo https://github.com/gohugoio/hugo/releases/download/v${HUGO
     tar -xzf /tmp/hugo/${HUGO_TAR} -C /tmp/hugo && mv /tmp/hugo/hugo usr/local/bin && \
     rm -rf /tmp/hugo && hugo version
 
-# haskell
-RUN sudo apt-get update && apt-get install -y haskell-platform
-
-EXPOSE 4321
+# haskell 8.6.5
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends gnupg dirmngr && \ 
+    echo 'deb http://downloads.haskell.org/debian stretch main' > /etc/apt/sources.list.d/ghc.list && \
+    apt-key adv --keyserver keyserver.ubuntu.com --recv-keys BA3CBA3FFE22B574 && \
+    apt-get update && \
+    apt-get install -y --no-install-recommends ghc-8.6.5
+RUN ln /opt/ghc/bin/ghc /usr/local/bin/ghc
